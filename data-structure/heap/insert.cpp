@@ -45,9 +45,10 @@ class minHeap{
 void minHeap::insert(int x){
     if(size==capacity) return;
     size++;
-    arr[size-1]=x;
+    int i =size-1;
+    arr[i]=x;
      
-    for(int i=size-1 ; i!=0 && arr[parent(i)] > arr[i] ; ){
+    while (  i!=0 && arr[parent(i)] > arr[i]  ){
         swap(arr[i] ,  arr[parent(i)]);
         i= parent(i);
  
