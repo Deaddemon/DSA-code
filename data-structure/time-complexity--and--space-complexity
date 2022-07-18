@@ -1,0 +1,8 @@
+https://www.scaler.com/topics/data-structures/space-complexity-in-data-structure/
+
+
+space-complexity: 
+if there are only varibles example int , long long , they will have constant complexity
+O(1)
+but lets say there is an array of int of size n  then complexity is  n*4 
+O(n)
