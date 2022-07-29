@@ -1,0 +1,24 @@
+hashing is a technique
+applications:
+dictionaries
+database indexing
+cryptography
+caches
+routers....
+
+direct address table
+idea: using keys as indexes
+ example: using a boolean array
+ it doesnot handle large keys, floating point number,strings, addresses
+ coz these cannot be considered as indexes
+ 
+
+ hash table:a array
+ hash functions: converts keys to indexes
+ 
+ collision handling
+ chaining 
+ open addressing:
+ -linear probing
+ -quadratic probing
+ -double hashing
