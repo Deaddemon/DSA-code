@@ -41,3 +41,15 @@ public:
         children = _children;
     }
 };
+
+
+
+
+
+
+
+
+//related questions
+// 1:   https://leetcode.com/problems/n-ary-tree-level-order-traversal/
+// sol: https://leetcode.com/submissions/detail/792155789/
+
