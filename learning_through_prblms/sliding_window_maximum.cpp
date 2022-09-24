@@ -6,6 +6,7 @@
 //https://www.youtube.com/watch?v=CZQGRp93K4k
 
 //ques: https://leetcode.com/problems/sliding-window-maximum/
+//more ques: https://leetcode.com/problems/max-value-of-equation/
 
 
 
