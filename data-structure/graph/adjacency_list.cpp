@@ -15,6 +15,7 @@
  	
  	
  	//considering undirected graph
+  
  	adj[u][v] = 1;
  	adj[u][v] = 1;
  	
