@@ -13,6 +13,7 @@
  	while(!q.empty()){
  		int f= q.front().first;
  		int s= q.front().second; //the previous node or the parent node
+   q.pop();
  		
  		for(auto it: adj[node]){
  			
