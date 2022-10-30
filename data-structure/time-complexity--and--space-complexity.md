@@ -20,10 +20,15 @@ time-complexity:
 
 
 normal for and while loop 
+
 https://www.youtube.com/watch?v=9TlHvipP5yA
+
 https://www.youtube.com/watch?v=9SgLBjXqwd4
+
 https://www.youtube.com/watch?v=p1EnSvS3urU
 
+
 recursion
+
 https://www.youtube.com/watch?v=N89PN_uyelU 
 
