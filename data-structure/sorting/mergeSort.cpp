@@ -9,6 +9,16 @@ https://www.geeksforgeeks.org/sorting-terminology/
 https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/
 
 
+**Resources**
+
+https://www.youtube.com/watch?v=6pV2IF0fgKY&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=33
+https://www.youtube.com/watch?v=mB5HXBb_HY8&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=39&t=9s
+https://www.youtube.com/watch?v=ak-pz7tS5DE&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=36
+https://www.javatpoint.com/merge-sort
+https://www.youtube.com/watch?v=cWvruDR-hJA&t=2s
+
+
+
 
 ----------------------------------------------------------------------------
 this is how u basically merge two sorted arrays
@@ -144,7 +154,7 @@ recursive
 
 
 ----------------------------------------------------------------------------
-
+You will use it indirectly most of the times
 
 
 
