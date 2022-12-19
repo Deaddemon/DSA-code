@@ -6,7 +6,7 @@
 //maintain a visited vector
 
 
-vector<int> dfs(int v, vector<int> adj[]){
+vector<int> bfs(int v, vector<int> adj[]){
 	vector<int> ans;
 	
 	vector<int> vis(v+1 , 0);
