@@ -36,3 +36,46 @@ https://leetcode.com/problems/binary-tree-right-side-view/description/<br>
 
 https://leetcode.com/problems/symmetric-tree/<br>
  //it is again based on root-right-left order approach
+ 
+ 
+  
+ 
+ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/<br>
+ //basis of lots of prblm<br>
+ //two approaches<br>
+ // 1. using root to node path (costly in terms of space)<br>
+ // 2. a method in which we return back null if curr!= node we are finding else we return the node<br>
+ 
+ https://leetcode.com/problems/maximum-width-of-binary-tree/<br>
+ //level order without using vectors  <br>
+ 
+ 
+ https://practice.geeksforgeeks.org/problems/children-sum-parent/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article<br>
+ 
+ 
+ https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/<br>
+https://www.codingninjas.com/codestudio/problems/time-to-burn-tree_630563?source=youtube&amp;campaign=Striver_Tree_Videos&amp;utm_source=youtube&amp;utm_medium=affiliate&amp;utm_campaign=Striver_Tree_Videos<br>
+ parent pointer concept + dfs <br>
+ TreeNode/ value might be given<br>
+ maintain map of node and parent<br>
+ visited map of node and bool value<br>
+ and a queue<br>
+ when dis++ == k the elemenets in queue are ans<br>
+ 
+ 
+ https://leetcode.com/problems/count-complete-tree-nodes/<br>
+ use the concept of nodes = 1<<h-1 in perfect binary tree<br>
+ solve in logn<br>
+  
+ 
+ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/<br>
+ https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/<br>
+ https://www.youtube.com/watch?v=9GMECGQgWrQ&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=34<br>
+ they are similar <br>
+ draw and u will know<br>
+ 
+ https://leetcode.com/problems/serialize-and-deserialize-binary-tree/<br>
+ concept of stringstream , getline , using them together<br>
+ handling string with commas(,) in between<br>
+ 
+ 
