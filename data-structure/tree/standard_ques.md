@@ -79,3 +79,39 @@ https://www.codingninjas.com/codestudio/problems/time-to-burn-tree_630563?source
  handling string with commas(,) in between<br>
  
  
+  https://leetcode.com/problems/search-in-a-binary-search-tree/<br>
+ 
+ https://leetcode.com/problems/insert-into-a-binary-search-tree/<br>
+ 
+ https://leetcode.com/problems/delete-node-in-a-bst/<br>
+ two ways: <br>
+ 1. connecting lefts (lastRight) to rightChild <br>
+ 2. connecting leftChild to rights(lastLeft)<br>
+ figure it out<br>
+ 
+ https://leetcode.com/problems/kth-smallest-element-in-a-bst/<br>
+ think of inorder<br>
+ 
+ https://leetcode.com/problems/validate-binary-search-tree/<br>
+ LONG_MAX , LONG_MIN also exist<br>
+ set a range for every node<br>
+ 
+ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/<br>
+ make use of bst: l < r < R<br>
+ node at which splitting happens<br>
+ 
+ https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/<br>
+  store upperbound for all node<br>
+  for left: ub is parent<br>
+  for right: ub is ub of parent node<br>
+  
+  https://practice.geeksforgeeks.org/problems/predecessor-and-successor/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+  three approaches:<br>
+  1. O(N) + O(N) || O(N) + O(NlogN)<br>
+  2. O(N)<br>
+  3. O(H)<br>
+  
+  https://leetcode.com/problems/binary-search-tree-iterator/<br>
+  https://leetcode.com/problems/two-sum-iv-input-is-a-bst/<br>
+  iterator vla concept<br>
+ 
