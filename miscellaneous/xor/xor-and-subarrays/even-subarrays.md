@@ -1,5 +1,7 @@
 https://codeforces.com/contest/1731/problem/C<br>
 
+https://codeforces.com/problemset/submission/1731/187066894<br>
+
 number of total subarrays: (n*(n+1))/2<br>
 A number has odd number of divisors if it is a perfect square<br>
 the maximum possible XOR sum of any subarray will be less than  2n<br>
