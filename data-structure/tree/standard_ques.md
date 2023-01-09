@@ -48,6 +48,8 @@ https://leetcode.com/problems/symmetric-tree/<br>
  
  https://leetcode.com/problems/maximum-width-of-binary-tree/<br>
  //level order without using vectors  <br>
+ //indexing the nodes <br>
+                
  
  
  https://practice.geeksforgeeks.org/problems/children-sum-parent/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article<br>
