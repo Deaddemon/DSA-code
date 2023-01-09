@@ -49,6 +49,8 @@ https://leetcode.com/problems/symmetric-tree/<br>
  https://leetcode.com/problems/maximum-width-of-binary-tree/<br>
  //level order without using vectors  <br>
  //indexing the nodes <br>
+ //not as 1 to n <br>
+ //from each level indexing must start from 0 to prevent runtime error
                 
  
  
