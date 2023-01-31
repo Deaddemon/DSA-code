@@ -5,7 +5,8 @@
 //we use queue
 //maintain a visited vector
 
-
+//v=  number of nodes
+//vector<int> adj[] adjacency list
 vector<int> bfs(int v, vector<int> adj[]){
 	vector<int> ans;
 	
