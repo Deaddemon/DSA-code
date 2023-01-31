@@ -29,3 +29,19 @@
  	adj[v].push_back(u);
  	
  }
+
+
+
+//generic code to convert adj matrix to adj list
+        //given 
+        // vector<vector<int>> adj
+        //int v
+        vector<int> adjL[v];
+        for(int i=0 ; i<v ; i++){
+            for(int j =0 ; j<v ; j++){
+                if(adjM[i][j] == 1&& i!=j){
+                    adjL[i].push_back(j);
+                    adjL[j].push_back(i);
+                }
+            }
+        }
