@@ -1,4 +1,4 @@
- 
+//undirected
 //key point : if the node is already visited might be cylce
 //BUT :  we need to consider the case that already visited node can also be the previous node
 // cycle detected will only be true if next node is already visited 
@@ -30,3 +30,26 @@
  	
  	return false;
  }
+
+
+
+//directed graph
+//maintain a path visited array , which takes care of what path we traveling in present
+//a cycle in directed graph is different , draw and know
+
+//if a node is visited again on the same path , then cycle exist
+
+bool dfs(int node , vector<int>&vis , vector<int>&path , vector<int> adj[]){
+	
+	vis[node] = 1;
+	paht[node] = 1;
+	
+	for(auto it: adj[node]){
+		if( !vis[it]){
+			dfs(it,vis,path,adj);
+		}
+		else if(path[it]) return true;
+	}
+	path[node] = 0;
+	return false;
+}
