@@ -19,7 +19,7 @@ class DisjointSet{
     
     int findPar(int node){
         if(node == parent[node]) return node;
-        else parent[node] = findPar(parent[node]);
+        else return parent[node] = findPar(parent[node]);
     }
     
     void unionByRank(int u , int v){
