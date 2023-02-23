@@ -1,4 +1,4 @@
-
+//https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?
 class Solution
 {
     private:
