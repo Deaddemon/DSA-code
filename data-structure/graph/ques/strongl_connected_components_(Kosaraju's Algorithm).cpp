@@ -1,4 +1,4 @@
-```cpp
+
 class Solution
 {
     private:
@@ -67,4 +67,4 @@ class Solution
         
     }
 };
-```
+ 
