@@ -5,7 +5,7 @@
 -startsWith (prefix)
 
 ```c++
- #include <bits/stdc++.h>
+  #include <bits/stdc++.h>
 using namespace std;
 #define  FastIO ios_base::sync_with_stdio(false); cin.tie(NULL);
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
@@ -16,9 +16,9 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 //search
 //startsWith (prefix)
  
-struct TrieNode{
+struct Trie{
 	//array contains reference pointers
-	TrieNode *array[26];
+	Trie *array[26];
 	bool isLeaf = false;
 };
 
@@ -127,6 +127,10 @@ signed main(){
  
   return 0;
 	 }
+	 
+ 
+ 
+
 	 
  
  
