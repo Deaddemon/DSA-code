@@ -110,3 +110,52 @@ int uniquePaths(int m, int n) {
   return dp[m - 1][n - 1];
 }
 ```
+
+### space optimised 
+```cpp
+#include <bits/stdc++.h>
+
+//TC: O(m*n)
+//SC: O(n)
+int uniquePaths(int m, int n) {
+
+  // there exist a set of overlapping prblm
+  // we are calculating various paths again and again
+  //  hence we can use dp here
+
+  // space optimzation
+  // length of prev array is equal to length of a row
+  vector<int> prev(n, 0);
+
+  for (int i = 0; i < m; i++) {
+
+    // this vector keep adding every jth indexed element of ith row
+    vector<int> temp(n, 0);
+
+    for (int j = 0; j < n; j++) {
+
+      if (i == 0 && j == 0) {
+        // this step
+        temp[j] = 1;
+        continue;
+      }
+      // path coming from up
+      // path coming from left
+      int up = 0, left = 0;
+      if (i > 0) {
+        up = prev[j];
+      }
+      if (j > 0) {
+        // element of left is inside temp[j-1];
+        left = temp[j - 1];
+      }
+
+      temp[j] = up + left;
+    }
+
+    prev = temp;
+  }
+
+  return prev[n - 1];
+}
+```
