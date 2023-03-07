@@ -155,7 +155,6 @@ int uniquePaths(int m, int n) {
 
     prev = temp;
   }
-
   return prev[n - 1];
 }
 ```
