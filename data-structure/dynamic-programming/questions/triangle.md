@@ -4,9 +4,9 @@ https://www.codingninjas.com/codestudio/problems/triangle_1229398
 ```cpp
 #include <bits/stdc++.h> 
 
-TC: 1 + 2 + 3 + 4 + 5 _ _ n   everyone have 2 pos 
-    approx: 2^(n*(n+1)/2)
-SC: recursion stack : O(N)
+//TC: 1 + 2 + 3 + 4 + 5 _ _ n   everyone have 2 pos 
+//    approx: 2^(n*(n+1)/2)
+//SC: recursion stack : O(N)
 
 int helper( int i , int j , int n  , vector<vector<int>>& triangle  ){
 	//try to draw the recursion tree
@@ -42,8 +42,8 @@ int minimumPathSum(vector<vector<int>>& triangle, int n){
 ```cpp
 #include <bits/stdc++.h> 
 
-TC: ON*N)  almost half of this
-SC: recursion stack  + dp array : O(N) + O(N*N)
+//TC: ON*N)  almost half of this
+//SC: recursion stack  + dp array : O(N) + O(N*N)
 
 int helper( int i , int j , int n  , vector<vector<int>>& triangle , vector<vector<int>>& dp ){
 	//try to draw the recursion tree
@@ -80,8 +80,8 @@ int minimumPathSum(vector<vector<int>>& triangle, int n){
 ```cpp
 #include <bits/stdc++.h> 
  
-TC: O(n*n) half of this
-SC: O(n*n) : dp array
+//TC: O(n*n) half of this
+//SC: O(n*n) : dp array
 
 int minimumPathSum(vector<vector<int>>& triangle, int n){
 	// fixed starting point , variable ending point example
@@ -121,6 +121,8 @@ int minimumPathSum(vector<vector<int>>& triangle, int n){
 ```cpp
 #include <bits/stdc++.h> 
  
+ //TC: O(n*n)
+ // SC: O(n) 
 int minimumPathSum(vector<vector<int>>& triangle, int n){
 	// fixed starting point , variable ending point example
 	// we will write recursion from 0,0
