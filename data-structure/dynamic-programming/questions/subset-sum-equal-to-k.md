@@ -1,5 +1,9 @@
 https://www.codingninjas.com/codestudio/problems/subset-sum-equal-to-k_1550954
 
+
+similar ques: <br>
+https://www.codingninjas.com/codestudio/problems/partition-equal-subset-sum_892980
+
 ### recursion
 ```cpp
 #include <bits/stdc++.h> 
@@ -31,7 +35,43 @@ bool subsetSumToK(int n, int k, vector<int> &arr) {
     return helper( n-1 , k, arr);
 }
 ```
+##### for the second ques:
+```cpp
+#include<bits/stdc++.h>
 
+bool helper(int i , int k , vector<int> &arr){
+
+	if(k==0) return true;
+	if(i==0) return arr[i]==k;
+
+	bool notPick = helper(i-1 , k , arr);
+	bool pick = false;
+
+	if(arr[i] <= k){
+		pick = helper(i-1, k-arr[i] , arr);
+	}
+
+	return notPick || pick;
+}
+
+bool canPartition(vector<int> &arr, int n)
+{
+	// if the sum of all numbers is odd, it cant be partitioned
+	// other wise
+	// the sum of both array is sum/2
+	//  s1 + s2 = sum , s1==s2
+	// so even if there exist a single subset with sum/2, the other will obviously exist
+	// now it breaks down to subset with sum k problem
+
+	int sum =0 ;
+	sum = accumulate(arr.begin() ,arr.end() , sum);
+
+	if(sum%2==1) return false;
+	else
+	return helper( n-1 , sum/2 , arr );
+}
+
+```
 ### memoization
 ```cpp
 #include <bits/stdc++.h>
