@@ -7,6 +7,8 @@ https://www.codingninjas.com/codestudio/problems/partition-equal-subset-sum_8929
 https://www.codingninjas.com/codestudio/problems/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum_842494
 <br>
 https://www.codingninjas.com/codestudio/problems/number-of-subsets_3952532
+<br>
+https://www.codingninjas.com/codestudio/problems/partitions-with-given-difference_3751628
 
 ### recursion
 ```cpp
@@ -292,4 +294,44 @@ int findWays(vector<int> &arr, int tar) {
   }
   return dp[n - 1][k];
 }
+```
+https://www.codingninjas.com/codestudio/problems/partitions-with-given-difference_3751628
+```cpp
+#include <bits/stdc++.h>
+
+int mod = 1e9 + 7;
+int helper(int i, int k, vector<int> &arr, vector<vector<int>> &dp) {
+
+  if (i == 0) {
+    if (k == 0 && arr[0] == 0)
+      return 2;
+    if (k == 0 || arr[0] == k)
+      return 1;
+    return 0;
+  }
+
+  if (dp[i][k] != -1)
+    return dp[i][k];
+
+  int notPick = helper(i - 1, k, arr, dp);
+  int pick = 0;
+  if (arr[i] <= k) {
+    pick = helper(i - 1, k - arr[i], arr, dp);
+  }
+
+  return dp[i][k] = (pick + notPick) % mod;
+}
+int countPartitions(int n, int d, vector<int> &arr) {
+  //
+  int sum = accumulate(arr.begin(), arr.end(), 0);
+
+  int k = sum - d;
+  if (k % 2 == 1 || k < 0)
+    return 0;
+
+  vector<vector<int>> dp(n, vector<int>((k / 2) + 1, -1));
+
+  return helper(n - 1, k / 2, arr, dp);
+}
+
 ```
