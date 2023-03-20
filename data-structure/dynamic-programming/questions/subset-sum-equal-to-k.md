@@ -9,6 +9,8 @@ https://www.codingninjas.com/codestudio/problems/partition-a-set-into-two-subset
 https://www.codingninjas.com/codestudio/problems/number-of-subsets_3952532
 <br>
 https://www.codingninjas.com/codestudio/problems/partitions-with-given-difference_3751628
+<br>
+https://www.codingninjas.com/codestudio/problems/target-sum_4127362?
 
 ### recursion
 ```cpp
@@ -332,6 +334,46 @@ int countPartitions(int n, int d, vector<int> &arr) {
   vector<vector<int>> dp(n, vector<int>((k / 2) + 1, -1));
 
   return helper(n - 1, k / 2, arr, dp);
+}
+
+```
+
+https://www.codingninjas.com/codestudio/problems/target-sum_4127362
+```cpp
+#include <bits/stdc++.h>
+
+int helper(int i, int k, vector<int> &arr) {
+
+  if (i == 0) {
+    if (k == 0 && arr[0] == 0)
+      return 2;
+    if (k == 0 || arr[0] == k)
+      return 1;
+    return 0;
+  }
+
+  int notPick = helper(i - 1, k, arr);
+  int pick = 0;
+  if (arr[i] <= k) {
+    pick = helper(i - 1, k - arr[i], arr);
+  }
+
+  return notPick + pick;
+}
+int targetSum(int n, int target, vector<int> &arr) {
+  //
+
+  // s1 - s2 = target
+  // s1 + s2 = sum
+
+  int sum = accumulate(arr.begin(), arr.end(), 0);
+
+  if (sum - target < 0 || (sum - target) % 2 == 1)
+    return 0;
+
+  int k = (sum - target) / 2;
+
+  return helper(n - 1, k, arr);
 }
 
 ```
