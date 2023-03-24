@@ -1,5 +1,9 @@
 https://www.codingninjas.com/codestudio/problems/minimum-elements_3843091
 
+related ques:<br>
+https://www.codingninjas.com/codestudio/problems/ways-to-make-coin-change_630471      (hint: no min max asked, only count is asked)<br>
+https://codingninjas.com/codestudio/problems/unbounded-knapsack_1215029 <br>
+
 ### recursion
 
 ```cpp
@@ -171,5 +175,35 @@ int minimumElements(vector<int> &num, int x) {
   } else {
     return res;
   }
+}
+```
+
+https://codingninjas.com/codestudio/problems/unbounded-knapsack_1215029 <br>
+```cpp
+
+//unbounded knapsack consist of infinite supplies of weight
+
+#include <bits/stdc++.h>
+
+int helper(int i, int k, vector<int> &profit, vector<int> &weight , vector<vector<int>>&dp) {
+
+  if (i == 0) {
+    return (int)(k / weight[0]) * profit[0];
+  }
+
+  if(dp[i][k] !=-1) return dp[i][k];
+  int notPick = helper(i - 1, k, profit, weight , dp);
+  int pick = 0;
+  if (weight[i] <= k) {
+    pick = profit[i] + helper(i, k - weight[i], profit, weight , dp);
+  }
+
+  return dp[i][k] = max(notPick, pick);
+}
+int unboundedKnapsack(int n, int w, vector<int> &profit, vector<int> &weight) {
+  //
+
+  vector<vector<int>> dp( n , vector<int>(w+1, -1));
+  return helper(n - 1, w, profit, weight , dp);
 }
 ```
