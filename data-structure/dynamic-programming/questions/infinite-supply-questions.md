@@ -5,6 +5,12 @@ https://www.codingninjas.com/codestudio/problems/ways-to-make-coin-change_630471
 https://codingninjas.com/codestudio/problems/unbounded-knapsack_1215029 <br>
 https://www.codingninjas.com/codestudio/problems/rod-cutting-problem_800284 <br>
 
+
+#### theory
+```
+- for the pick part , stand and the same index , as we might need to take the same again and obvio the target will be reduced
+- base case : think of as a single element , then try to pick it
+```
 ### recursion
 
 ```cpp
