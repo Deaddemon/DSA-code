@@ -3,6 +3,7 @@ https://www.codingninjas.com/codestudio/problems/minimum-elements_3843091
 related ques:<br>
 https://www.codingninjas.com/codestudio/problems/ways-to-make-coin-change_630471      (hint: no min max asked, only count is asked)<br>
 https://codingninjas.com/codestudio/problems/unbounded-knapsack_1215029 <br>
+https://www.codingninjas.com/codestudio/problems/rod-cutting-problem_800284 <br>
 
 ### recursion
 
@@ -205,5 +206,42 @@ int unboundedKnapsack(int n, int w, vector<int> &profit, vector<int> &weight) {
 
   vector<vector<int>> dp( n , vector<int>(w+1, -1));
   return helper(n - 1, w, profit, weight , dp);
+}
+```
+
+https://www.codingninjas.com/codestudio/problems/rod-cutting-problem_800284 <br>
+```cpp
+
+
+int helper(int i, int k, vector<int> &price, vector<vector<int>> &dp) {
+
+  if (i == 0) {
+    // at index 0, len we get is 1 always
+    //
+    return k * price[0];
+  }
+
+  if (dp[i][k] != -1)
+    return dp[i][k];
+
+  int notPick = 0 + helper(i - 1, k, price, dp);
+  int pick = INT_MIN;
+
+  int roadLen = i + 1;
+  if (roadLen <= k) {
+    pick = price[i] + helper(i, k - roadLen, price, dp);
+  }
+
+  return dp[i][k] = max(notPick, pick);
+}
+int cutRod(vector<int> &price, int n) {
+  // cost 2 5 7 8 10
+  // len 1 2  3 4  5
+
+  // instead of cutting , we think of building fashion starting from 0going up
+  // to n
+
+  vector<vector<int>> dp(n, vector<int>(n + 1, -1));
+  return helper(n - 1, n, price, dp);
 }
 ```
