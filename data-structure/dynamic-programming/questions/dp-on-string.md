@@ -25,7 +25,168 @@ https://www.codingninjas.com/codestudio/problems/longest-common-subsequence_6248
  
 
 ```
+### recursion
+```cpp
+#include<bits/stdc++.h>
 
+int helper(int i, int j , string s, string t ){
+	if(i <0 || j<0) return 0;
+	
+	if( s[i] == t[j]){
+		return 1 + helper(i-1 , j-1 , s, t);
+	}else{
+		return 0 + max(helper(i-1, j,  s, t) , helper(i, j-1 ,  s, t));
+	}
+}
+int lcs(string s, string t)
+{
+	//
+	int m = s.size() ;
+	int n = t.size();
+	return helper(m -1 , n-1 , s, t);
+}
+```
+### memoization
+```cpp
+#include <bits/stdc++.h>
+
+int helper(int i, int j, string s, string t, vector<vector<int>> &dp) {
+  // if(i <0 || j<0) return 0;
+  // shifting i and j right so tabulation can be implemented
+  if (i == 0 || j == 0)
+    return 0;
+
+  if (dp[i][j] != -1)
+    return dp[i][j];
+
+  // if( s[i] == t[j]){
+  // shifting i and j right so tabulation can be implemented
+  if (s[i - 1] == t[j - 1]) {
+    return dp[i][j] = 1 + helper(i - 1, j - 1, s, t, dp);
+  } else {
+    return dp[i][j] =
+               0 + max(helper(i - 1, j, s, t, dp), helper(i, j - 1, s, t, dp));
+  }
+}
+int lcs(string s, string t) {
+  //
+  int m = s.size();
+  int n = t.size();
+
+  // vector<vector<int>> dp( m , vector<int>(n, -1));
+  // shifting i and j right so tabulation can be implemented
+  vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1));
+
+  // return helper(m -1 , n-1 , s, t , dp);
+  // shifting i and j right so tabulation can be implemented
+  return helper(m, n, s, t, dp);
+}
+```
+### tabulation
+```cpp
+#include <bits/stdc++.h>
+
+
+int lcs(string s, string t) {
+  //
+  int m = s.size();
+  int n = t.size();
+
+  // vector<vector<int>> dp( m , vector<int>(n, -1));
+  // shifting i and j right so tabulation can be implemented
+  vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1));
+
+  for(int i=0 ; i<m+1 ; i++) dp[i][0] = 0;
+  for(int j=0 ; j<n+1 ; j++) dp[0][j] = 0;
+
+  for(int i=1 ; i<m+1; i++){
+	  for(int j=1 ; j<n+1 ; j++){
+		  if(s[i-1] == t[j-1]){
+			  dp[i][j] = 1 + dp[i-1][j-1];
+		  }else{
+			  dp[i][j] = max(dp[i-1][j] , dp[i][j-1]);
+		  }
+	  }
+  }
+
+  
+  return dp[m][n];
+}
+```
+### space optimized
+```cpp
+#include <bits/stdc++.h>
+
+
+int lcs(string s, string t) {
+  //
+  int m = s.size();
+  int n = t.size();
+
+  // vector<vector<int>> dp( m , vector<int>(n, -1));
+  // shifting i and j right so tabulation can be implemented
+  //vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1));
+	vector<int> prev(n+1 , 0) , curr(n+1 , 0);
+
+//   for(int i=0 ; i<m+1 ; i++) dp[i][0] = 0;
+//   for(int j=0 ; j<n+1 ; j++) dp[0][j] = 0;
+//resolves as we already initialized with 0
+
+  for(int i=1 ; i<m+1; i++){
+	  for(int j=1 ; j<n+1 ; j++){
+		  if(s[i-1] == t[j-1]){
+			  curr[j] = 1 + prev[j-1];
+		  }else{
+			  curr[j] = max(prev[j] , curr[j-1]);
+		  }
+	  }
+
+	  prev= curr;
+  }
+
+  
+  return prev[n];
+}
+```
+##### for printing the lcs
+```cpp
+//add the below code in tabulation
+
+ // for(int i=0 ; i<m+1; i++){
+  //   for(int j=0 ; j<n+1 ; j++){
+  //     cout<<dp[i][j]<<" ";
+  //   }
+  //   cout<<endl;
+  // }
+  
+string a ="";
+  
+  int i=m , j = n;
+  while(i>0 && j>0) {
+       if(s[i-1] == t[j-1]){
+         a.push_back(s[i-1]);
+         //cout<<s[i-1]<<" ";
+         i = i-1;
+         j= j-1;
+       }else{
+         if(dp[i-1][j] > dp[i][j-1]){
+           i = i-1;
+         }else{
+           j = j-1;
+         }
+       }
+    }
+    cout<<a<<endl;
+    reverse(a.begin(), a.end());
+    cout<<a<<endl;
+   ```
+##### longest palindromic subsequence
+```
+given a string s
+reverse the string , and lets call it t
+now find the lcs of s and t
+the res will give us longest palindromic subsequence
+```
 https://www.codingninjas.com/codestudio/problems/longest-common-substring_1235207
 ```cpp
 //ex : acd axd
