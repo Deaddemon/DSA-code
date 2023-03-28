@@ -190,14 +190,112 @@ the res will give us longest palindromic subsequence
 https://www.codingninjas.com/codestudio/problems/longest-common-substring_1235207
 ```cpp
 //ex : acd axd
+#include <bits/stdc++.h>
+//  abcjklp acjkp , dp table:
+// different from subseq , the way table is filled
+// 0 0 0 0 0 0 
+// 0 1 0 0 0 0 
+// 0 0 0 0 0 0 
+// 0 0 1 0 0 0 
+// 0 0 0 2 0 0 
+// 0 0 0 0 3 0 
+// 0 0 0 0 0 0 
+// 0 0 0 0 0 1 
+
+int lcs(string &s, string &t) {
+  int m = s.size();
+  int n = t.size();
+
+  // shifting i and j right so tabulation can be implemented
+  vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+
+  int ans = 0;
+
+  for (int i = 1; i < m + 1; i++) {
+    for (int j = 1; j < n + 1; j++) {
+      if (s[i - 1] == t[j - 1]) {
+        dp[i][j] = 1 + dp[i - 1][j - 1];
+        ans = max(ans, dp[i][j]);
+      } else {
+        dp[i][j] = 0;
+      }
+    }
+  }
+    //  for(int i=0 ; i<m+1; i++){
+    //   for(int j=0 ; j<n+1 ; j++){
+    //     cout<<dp[i][j]<<" ";
+    //   }
+    //   cout<<endl;
+    // }
+ 
+
+  return ans;
+}
 ``` 
 
 https://www.codingninjas.com/codestudio/problems/minimum-insertions-to-make-palindrome_985293 
 ```cpp
 // n - longest palindromic subseq
+#include <bits/stdc++.h>
+int minInsertion(string &str) {
+  // catch: n - longest common palindrome(str)
+  // longest common palindrome = lcs(str , rev_str);
+
+  int n = str.size();
+  string rev_str = str;
+  reverse(rev_str.begin(), rev_str.end());
+
+  // finding lcs through lcs
+  vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
+
+  for (int i = 0; i < n + 1; i++)
+    dp[i][0] = 0;
+  for (int j = 0; j < n + 1; j++)
+    dp[0][j] = 0;
+
+  for (int i = 1; i < n + 1; i++) {
+    for (int j = 1; j < n + 1; j++) {
+      if (str[i - 1] == rev_str[j - 1]) {
+        dp[i][j] = 1 + dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  return n - dp[n][n];
+}
 ```
 
 https://www.codingninjas.com/codestudio/problems/can-you-make_4244510
 ```cpp
 //ex: a b c d  and  a n c
+//catch : n + m - 2*lcs(str1 , str2)
+#include <bits/stdc++.h>
+int canYouMake(string &str, string &ptr) {
+  //
+  int n = str.size();
+  int m = ptr.size();
+
+  vector<vector<int>> dp(n + 1, vector<int>(m + 1, -1));
+
+  for (int i = 0; i < n + 1; i++)
+    dp[i][0] = 0;
+  for (int j = 0; j < m + 1; j++)
+    dp[0][j] = 0;
+
+  for (int i = 1; i < n + 1; i++) {
+    for (int j = 1; j < m + 1; j++) {
+      if (str[i - 1] == ptr[j - 1]) {
+        dp[i][j] = 1 + dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  // cout<<dp[n][m]<<endl;
+  // cout<<"----";
+  return n- dp[n][m]  + m - dp[n][m];
+}
 ```
