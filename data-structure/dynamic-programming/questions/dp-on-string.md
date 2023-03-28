@@ -1,4 +1,4 @@
-
+##### lcs based
 https://www.codingninjas.com/codestudio/problems/longest-common-subsequence_624879
 <br>
 https://www.codingninjas.com/codestudio/problems/longest-common-substring_1235207
@@ -7,7 +7,15 @@ https://www.codingninjas.com/codestudio/problems/longest-common-substring_123520
 <br>
 https://www.codingninjas.com/codestudio/problems/can-you-make_4244510
 <br>
-
+https://www.codingninjas.com/codestudio/problems/shortest-supersequence_4244493
+<br>
+##### string matching
+https://leetcode.com/problems/distinct-subsequences/
+<br>
+https://www.codingninjas.com/codestudio/problems/edit-distance_630420
+<br>
+https://www.codingninjas.com/codestudio/problems/wildcard-pattern-matching_701650
+<br>
 ##### theory
 ```
 - a subsequence can be consecutive or cannot be consecutive but it always maintain the order
@@ -299,3 +307,21 @@ int canYouMake(string &str, string &ptr) {
   return n- dp[n][m]  + m - dp[n][m];
 }
 ```
+## string matching
+
+https://www.codingninjas.com/codestudio/problems/shortest-supersequence_4244493
+```cpp
+// common char are taken once - way to make it min
+// follow up ques -  printing the shortest common superseq
+```
+https://leetcode.com/problems/distinct-subsequences/
+```cpp
+// f(n-1 , m-1) no. of distinct suseq  of s2(from 0 to j) in s1(from 0 to i)
+//   i   ,   j
+```
+
+https://www.codingninjas.com/codestudio/problems/edit-distance_630420
+ 
+ 
+https://www.codingninjas.com/codestudio/problems/wildcard-pattern-matching_701650
+
