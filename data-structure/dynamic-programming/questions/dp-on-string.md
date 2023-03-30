@@ -307,13 +307,79 @@ int canYouMake(string &str, string &ptr) {
   return n- dp[n][m]  + m - dp[n][m];
 }
 ```
-## string matching
+ 
 
 https://www.codingninjas.com/codestudio/problems/shortest-supersequence_4244493
 ```cpp
 // common char are taken once - way to make it min
 // follow up ques -  printing the shortest common superseq
+
+#include <bits/stdc++.h> 
+
+ 
+string shortestSupersequence(string a, string b)
+{
+	// Write your code here.
+	int n = a.size();
+	int m = b.size();
+
+	vector<vector<int>> dp( n+1 , vector<int>(m+1 , -1));
+
+	for(int i=0 ; i<n+1 ; i++) dp[i][0] = 0;
+	for(int j=0 ; j<m+1 ; j++) dp[0][j] = 0;
+
+	//lcs k jaisa hi h thoda thoda
+	// len: m +n - lcs(a , b)
+	for(int i=1 ; i<n+1 ; i++){
+		for(int j=1 ; j<m+1 ; j++){
+			if(a[i-1] == b[j-1]){
+				dp[i][j] = 1 + dp[i-1][j-1];
+			}else{
+				dp[i][j] = max(dp[i-1][j] , dp[i][j-1]);
+			}
+		}
+	}
+
+	//there is going to be out flow of one of the string and other string's char will be remained
+	string ans = "";
+	int i = n , j =m;
+	while(i >0 && j> 0){
+
+		if(a[i-1] == b[j-1]){
+			ans += a[i-1];
+			i--;
+			j--;
+			 
+		}else if( dp[i-1][j] > dp[i][j-1]){
+			ans += a[i-1];
+			i--;
+		}else{
+			ans += b[j-1];
+			j--;
+		}
+
+	}
+
+// brute
+// groot
+	while(i>0){
+		ans+= a[i-1];
+		i--;
+	}
+	while(j > 0){
+		ans+= b[j-1];
+		j--;
+	}
+//cout<<ans<<endl;
+	reverse(ans.begin() , ans.end());
+	//cout<<ans<<endl;
+	return ans;
+}
+
 ```
+
+## string matching
+
 https://leetcode.com/problems/distinct-subsequences/
 ```cpp
 // f(n-1 , m-1) no. of distinct suseq  of s2(from 0 to j) in s1(from 0 to i)
