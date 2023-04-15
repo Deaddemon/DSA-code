@@ -31,3 +31,8 @@ https://www.codingninjas.com/codestudio/problems/buy-and-sell-stock_1071012
 // try doing it with dp[n+][4]
 // some also do it with 4 variables
 ```
+https://www.codingninjas.com/codestudio/problems/best-time-to-buy-and-sell-stock_1080698
+```cpp
+//very similar to at most 2 transaction in III prblm of dp on stacks
+```
+
