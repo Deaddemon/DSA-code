@@ -385,7 +385,7 @@ https://leetcode.com/problems/distinct-subsequences/
 // f(n-1 , m-1) no. of distinct suseq  of s2(from 0 to j) in s1(from 0 to i)
 //   i   ,   j
 ```
-##### recursive 
+### recursive 
 ```cpp
 class Solution {
 public:
@@ -416,7 +416,7 @@ int helper(int i , int j , string s , string t){
     }
 };
 ```
-##### memoization
+### memoization
 ```cpp
 //code commented part shows 1-based implementation
 class Solution {
@@ -456,7 +456,7 @@ int helper(int i , int j , string s , string t , vector<vector<int>> &dp){
     }
 };
 ```
-##### tabulation
+### tabulation
 ```cpp
 class Solution {
 public:
