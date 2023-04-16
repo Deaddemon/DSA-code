@@ -512,7 +512,136 @@ int helper(int i , int j , string s , string t , vector<vector<int>> &dp){
 };
 ```
 https://www.codingninjas.com/codestudio/problems/edit-distance_630420
+```cpp
+//consider the three cases closely 
+// might be uncomfortable
+// in tabulation 1-based indexing 
+```
+### recursive
+```
+//consider the three cases closely 
+// might be uncomfortable
+
+class Solution {
+public:
+int helper(int i , int j , string s , string t){
+
+    //when s gets exhausted some numbers need to be inserted == j+1
+    if(i<0 ) return j+1;
+    //when t gets exhausted char in s need to be converted to empty string
+    if(j < 0) return i+1;
+
+    if(s[i] == t[j]){
+        return 0 + helper(i-1 , j-1, s , t);
+
+    }else{
+        //insertion i-1 ,j
+        //deletion i , j-1
+        //replace i-1 , j-1
+        return 1+ min(
+            helper( i-1 , j, s, t) ,
+            min( 
+                helper( i , j-1 , s, t),
+                helper(i-1 , j-1 , s, t)
+            ) 
+            );
+    }
+}
+
+    int minDistance(string word1, string word2) {
+        
+        int n= word1.size();
+        int m = word2.size();
+        return helper(n-1, m-1 , word1 , word2);
+    }
+};
+```
  
+### memoization
+```
+//Time Complexity: O(N*M)
+//Reason: There are N*M states therefore at max ‘N*M’ new problems will be solved.
+//Space Complexity: O(N*M) + O(N+M)
+
+class Solution {
+public:
+int helper(int i , int j , string s , string t , vector<vector<int>>& dp){
+
+    //when s gets exhausted some numbers need to be inserted == j+1
+    if(i<0 ) return j+1;
+    //when t gets exhausted char in s need to be converted to empty string
+    if(j < 0) return i+1;
+
+    if(dp[i][j] != -1) return dp[i][j];
+
+    if(s[i] == t[j]){
+        return dp[i][j] =  0 + helper(i-1 , j-1, s , t , dp);
+
+    }else{
+        //insertion i-1 ,j
+        //deletion i , j-1
+        //replace i-1 , j-1
+        return dp[i][j] =  1+ min(
+            helper( i-1 , j, s, t , dp) ,
+            min( 
+                helper( i , j-1 , s, t , dp),
+                helper(i-1 , j-1 , s, t , dp)
+            ) 
+            );
+    }
+}
+
+    int minDistance(string word1, string word2) {
+        
+        int n= word1.size();
+        int m = word2.size();
+
+        vector<vector<int>> dp(n , vector<int>(m , -1));
+        return helper(n-1 , m-1 , word1 , word2 , dp);
+    }
+};
+```
+
+### tabulation
+```cpp
+// one based indexing
+
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+
+        int n = word1.size() ;
+        int m = word2.size();
+
+        vector<vector<int>> dp( n+1 , vector<int>(m+1 , 0));
+
+        for(int i=1 ; i<=n ; i++){
+            dp[i][0] = i;
+        }
+        for(int j=1 ; j<=m ; j++){
+            dp[0][j] = j;
+        }
+
+        for(int i=1 ; i<=n ; i++){
+            for(int j=1 ;j<= m ; j++){
+
+                if(word1[i-1] == word2[j-1]){
+                    dp[i][j] = dp[i-1][j-1];
+                }else{
+                    //dp[i][j-1] inserting
+                    // dp[i-1][j] deleting
+                    //dp[i-1][j-1] replacing
+                    //get min of all
+                    dp[i][j] = min( dp[i-1][j-1] , min(dp[i-1][j] , dp[i][j-1])) +1;
+
+                }
+            }
+        }
+        return dp[n][m];
+        
+    }
+};
+```
  
 https://www.codingninjas.com/codestudio/problems/wildcard-pattern-matching_701650
 
