@@ -44,14 +44,131 @@ public:
 };
 ```
 
-https://www.codingninjas.com/codestudio/problems/selling-stock_630282
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 ```cpp
 //we have to know if we bought previously or not
 //acc to that we will be  selling/buying 
 // storing min like we did in prev ques wont work , coz here we have to 
 // explore all paths
 //selling must before buying
+
+//algo: every element have only two possibility , can buy or cannot buy(can sell)
+
 ```
+### recursion
+```cpp
+class Solution {
+public:
+//take or not take concept
+int helper(int i , int take ,vector<int>& prices ){
+
+    if(i == prices.size()) return 0;
+
+    if(take){
+        return max(-prices[i] + helper(i+1 , 0 , prices) , helper(i+1 , 1, prices));
+    } else{
+        return max( prices[i] + helper(i+1 , 1 , prices) , helper(i+1 , 0 , prices));
+    }    
+}
+    int maxProfit(vector<int>& prices) {
+
+
+        return helper(0, 1 , prices);
+        
+    }
+};
+```
+
+### memoization
+```cpp
+class Solution {
+public:
+//take or not take concept
+int helper(int i , int take ,vector<int>& prices, vector<vector<int>>&dp ){
+
+    if(i == prices.size()) return 0;
+
+    if(dp[i][take] != -1) return dp[i][take];
+
+    if(take){
+        return dp[i][take] =  max(-prices[i] + helper(i+1 , 0 , prices , dp) , helper(i+1 , 1, prices, dp));
+    } else{
+        return dp[i][take] = max( prices[i] + helper(i+1 , 1 , prices, dp) , helper(i+1 , 0 , prices, dp));
+    }     
+}
+    int maxProfit(vector<int>& prices) {
+
+        int n= prices.size();
+        vector<vector<int>> dp(n+1 , vector<int>(2, -1));
+ 
+        return helper(0, 1 , prices);
+        
+    }
+};
+```
+### tabulation
+```cpp
+class Solution {
+public:
+//take or not take concept
+
+    int maxProfit(vector<int>& prices) {
+
+        int n= prices.size();
+        vector<vector<int>> dp(n+1 , vector<int>(2, -1));
+
+        for(int take =0 ; take <2 ; take++){
+            dp[n][take] =0;
+        }
+
+        for(int i = n-1 ; i>=0 ; i-- ){
+            for(int take= 0; take<2 ; take++){
+                if(take){
+                    dp[i][take] = max(-prices[i] + dp[i+1][0] , 0 + dp[i+1][1] );
+                }else{
+                    dp[i][take] = max(prices[i] + dp[i+1][1] , 0 + dp[i+1][0] );
+                }
+            }
+        }
+        return dp[0][1];
+        
+    }
+};
+
+```
+### space optimisation
+```cpp
+class Solution {
+public:
+//take or not take concept
+ 
+    int maxProfit(vector<int>& prices) {
+
+        int n= prices.size();
+       // vector<vector<int>> dp(n+1 , vector<int>(2, -1));
+
+        vector<int> next(2, 0);
+
+        for(int take =0 ; take <2 ; take++){
+            next[take] =0;
+        }
+
+        for(int i = n-1 ; i>=0 ; i-- ){
+            vector<int> curr(2, 0);
+            for(int take= 0; take<2 ; take++){
+                if(take){
+                    curr[take] = max(-prices[i] + next[0] , 0 + next[1] );
+                }else{
+                   curr[take] = max(prices[i] + next[1] , 0 + next[0] );
+                }
+            }
+
+            next = curr;
+        }
+        return next[1];
+        
+    }
+};```
 
 https://www.codingninjas.com/codestudio/problems/buy-and-sell-stock_1071012
 ```cpp
