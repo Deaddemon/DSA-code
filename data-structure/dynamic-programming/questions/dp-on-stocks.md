@@ -228,7 +228,7 @@ int helper(int i , int buy , int cap , vector<int>& prices, int n , vector<vecto
     int maxProfit(vector<int>& prices) {
 
         int n = prices.size();
-        vector<vector<vector<int>>> dp( n+1, vector<vector<int>>(3 , vector<int>(3 , -1)));
+        vector<vector<vector<int>>> dp( n, vector<vector<int>>(2 , vector<int>(3 , -1)));
 
          
         return helper(0 , 1 , 2, prices , n , dp);
@@ -236,7 +236,48 @@ int helper(int i , int buy , int cap , vector<int>& prices, int n , vector<vecto
     }
 };
 ```
+### tabulation
+```cpp
+class Solution {
+public:
+ 
+    int maxProfit(vector<int>& prices) {
 
+        int n = prices.size();
+        vector<vector<vector<int>>> dp( n+1, vector<vector<int>>(2 , vector<int>(3 , 0)));
+        // for(int buy =0 ; buy <2 ; buy++){
+        //     for(int cap =0 ; cap<3 ; cap++){
+        //         dp[n][buy][cap] = 0;
+        //     }
+        // }
+        // // cap == 0
+        // for(int i=0  ; i<n ; i++){
+        //     for(int buy =0 ; buy <2 ; buy++){
+        //             dp[i][buy][0]= 0;
+        //     }
+        // }
+        
+        // all loops start from opposite
+        for(int i= n-1 ; i>=0 ; i--){
+            for( int buy =0 ; buy<2 ;buy++ ){
+            //starting from cap=1
+                for(int cap =1 ; cap <3 ; cap++){
+                    if( buy==0 ){
+                         dp[i][buy][cap]= max( -prices[i] + dp[i+1][1][cap] ,
+                        0 +dp[i+1][0][cap]  );
+                    }else{
+                         dp[i][buy][cap] = max( prices[i] + dp[i+1][0][cap-1]   , dp[i+1][1][cap]
+                        );
+                    }
+                }
+            }
+        }
+         
+        return dp[0][0][2];
+        
+    }
+};
+```
 
 https://www.codingninjas.com/codestudio/problems/best-time-to-buy-and-sell-stock_1080698
 ```cpp
