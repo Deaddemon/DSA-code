@@ -2,7 +2,7 @@ https://www.codingninjas.com/codestudio/problems/stocks-are-profitable_893405
 <br>
 https://www.codingninjas.com/codestudio/problems/selling-stock_630282
 <br>
-https://www.codingninjas.com/codestudio/problems/buy-and-sell-stock_1071012
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
 <br>
 
 
@@ -168,14 +168,76 @@ public:
         return next[1];
         
     }
-};```
+};
+```
 
-https://www.codingninjas.com/codestudio/problems/buy-and-sell-stock_1071012
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
 ```cpp
 //general intutive is of 3d dp (not so visually appealing)
 // try doing it with dp[n+][4]
 // some also do it with 4 variables
 ```
+### recursion
+```cpp
+class Solution {
+public:
+
+int helper(int i , int buy , int cap , vector<int>& prices, int n ){
+    
+    if(cap == 0) return 0; 
+    if( i== n) return 0;
+
+    if( buy ){
+        return max( -prices[i] + helper(i+1 , 0 , cap , prices , n) , 
+         0 + helper(i+1 , 1 , cap , prices , n));
+    }else{
+        return max( prices[i] + helper(i+1 , 1 , cap-1 , prices , n) ,
+        helper(i+1 , 0, cap , prices , n));
+    }
+
+}
+    int maxProfit(vector<int>& prices) {
+
+        int n = prices.size();
+        return helper(0 , 1 , 2, prices , n);
+        
+    }
+};
+```
+### memoization
+```cpp
+class Solution {
+public:
+
+int helper(int i , int buy , int cap , vector<int>& prices, int n , vector<vector<vector<int>>> &dp){
+    
+    if(cap == 0) return 0; 
+    if( i== n) return 0;
+
+    if(dp[i][buy][cap] != -1) return dp[i][buy][cap];
+
+    if( buy ){
+        return dp[i][buy][cap]= max( -prices[i] + helper(i+1 , 0 , cap , prices , n, dp) , 
+         0 + helper(i+1 , 1 , cap , prices , n, dp));
+    }else{
+        return dp[i][buy][cap] = max( prices[i] + helper(i+1 , 1 , cap-1 , prices , n , dp) ,
+        helper(i+1 , 0, cap , prices , n , dp));
+    }
+
+}
+    int maxProfit(vector<int>& prices) {
+
+        int n = prices.size();
+        vector<vector<vector<int>>> dp( n+1, vector<vector<int>>(3 , vector<int>(3 , -1)));
+
+         
+        return helper(0 , 1 , 2, prices , n , dp);
+        
+    }
+};
+```
+
+
 https://www.codingninjas.com/codestudio/problems/best-time-to-buy-and-sell-stock_1080698
 ```cpp
 //very similar to at most 2 transaction in III prblm of dp on stacks
