@@ -278,6 +278,39 @@ public:
     }
 };
 ```
+### space optmisation
+```cpp
+class Solution {
+public:
+ 
+    int maxProfit(vector<int>& prices) {
+
+        int n = prices.size();
+         vector<vector<int>> ahead(  2 , vector<int>(3 , 0));
+        
+        // all loops start from opposite
+        for(int i= n-1 ; i>=0 ; i--){
+             vector<vector<int>> curr(  2 , vector<int>(3 , 0));
+
+            for( int buy =0 ; buy<2 ;buy++ ){
+                for(int cap =1 ; cap <3 ; cap++){
+                    if( buy==0 ){
+                         curr[buy][cap]= max( -prices[i] + ahead[1][cap] ,
+                        0 + ahead[0][cap]  );
+                    }else{
+                         curr[buy][cap] = max( prices[i] + ahead[0][cap-1]   , ahead[1][cap]
+                        );
+                    }
+                }
+            }
+            ahead = curr;
+        }
+         
+        return ahead[0][2];
+        
+    }
+};
+```
 
 https://www.codingninjas.com/codestudio/problems/best-time-to-buy-and-sell-stock_1080698
 ```cpp
