@@ -4,7 +4,10 @@ https://www.codingninjas.com/codestudio/problems/selling-stock_630282
 <br>
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
 <br>
-
+https://www.codingninjas.com/codestudio/problems/best-time-to-buy-and-sell-stock_1080698
+<br>
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+<br>
 
 
 #### theory
@@ -315,5 +318,10 @@ public:
 https://www.codingninjas.com/codestudio/problems/best-time-to-buy-and-sell-stock_1080698
 ```cpp
 //very similar to at most 2 transaction in III prblm of dp on stacks
+```
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+```
+in cooldown can;t buy just after sell. (just next day cant buy)
 ```
 
