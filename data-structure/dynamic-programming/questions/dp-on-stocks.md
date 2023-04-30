@@ -8,6 +8,8 @@ https://www.codingninjas.com/codestudio/problems/best-time-to-buy-and-sell-stock
 <br>
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 <br>
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
+<br>
 
 
 #### theory
@@ -325,3 +327,4 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 in cooldown can;t buy just after sell. (just next day cant buy)
 ```
 
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
