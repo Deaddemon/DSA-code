@@ -27,7 +27,7 @@ vector<int> bfs(int v, vector<int> adj[]){
 				
 				for(auto it: adj[node]){ //finding the adjacent nodes of "node"
 					
-					if(!vis[i]){
+					if(!vis[it]){
               q.push(it);
               vis[it] = 1;
 					}
