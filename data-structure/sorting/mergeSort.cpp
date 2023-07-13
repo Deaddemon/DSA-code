@@ -64,7 +64,7 @@ void mergeSort(vector<int> &arr , int l , int r){
 	
 	if(r>l){
 		int mid = l + (r-l)/2;
-		mergeSort(arr, l , mid+1);
+		mergeSort(arr, l , mid);
 		mergeSort(arr, mid+1 , r);
 		
 		merge(arr, l, mid , r);
@@ -96,7 +96,7 @@ void merge(int a[] , int l , int m , int h){
 		right[i] = a[m+1+i];
 	}
 	
-	int i=0 , j=0,k= beg;
+	int i=0 , j=0,k= l;
 	while(i<n1 && j<n2){
 		if(left[i] < right[j]){
 			a[k++] = left[i++];
