@@ -6,6 +6,7 @@
 ### count 1s in a sorted binary array
 
 ### find_index_of_given_number_in_infinite_sorted_array
+```cpp
 int search(int arr[] , int x){
 	int low=0;
 	int high = 1;
@@ -19,9 +20,10 @@ int search(int arr[] , int x){
 	
 	return binarSearch(arr[], low, high, x);
 }
-
+```
 
 ### return the index of a given number x, in a rotated sorted array
+```cpp
 int search(int A[], int l, int h, int key){
         // l: The starting index
         // h: The ending index, you have to search the key in this range
@@ -50,9 +52,44 @@ int search(int A[], int l, int h, int key){
                 }
                 
             }
+
+
         }
         
         return -1;
         
 }
+
+```
+
+### find peak element in array
+```cpp
+int findMaximum(int arr[], int n) {
+	     
+	    int l=0 , h = n-1;
+	    int ans = 0;
+	    while(l<=h){
+	        int mid = l+ (h-l)/2;
+	        
+	        
+	        if( (mid == 0 || arr[mid-1]<=arr[mid]) && (arr[mid+1]<=arr[mid] || mid== n-1)){
+	           return arr[mid];
+	        }
+	        else if(arr[mid-1] >= arr[mid]){
+	            h = mid-1;
+	        }else{
+	            l= mid+1;
+	        }
+	    }
+	    
+	    return -1;
+	    
+	}
+```
+
+### find 2 elements in array whose sum is X
+
+### find 3 elements in array whose sum is X
+
+
 
