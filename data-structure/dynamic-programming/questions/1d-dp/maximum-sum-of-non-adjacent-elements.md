@@ -1,5 +1,15 @@
 https://www.codingninjas.com/codestudio/problems/maximum-sum-of-non-adjacent-elements_843261
 
+
+```
+- basic idea we get is generate all subsequence
+- then find the subsequence with maximum sum
+- for generating all subseq we use  "pick and non-pick method"
+- write function in terms of index
+- base case dekh le
+- if(ind ==0 ) return arr[i]
+```
+
 ### recursion
 
 ```c++
