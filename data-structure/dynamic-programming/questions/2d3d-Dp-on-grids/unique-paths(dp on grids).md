@@ -1,4 +1,19 @@
-https://www.codingninjas.com/codestudio/problems/total-unique-paths_1081470
+
+
+https://leetcode.com/problems/unique-paths/description/
+
+part-2
+
+https://leetcode.com/problems/unique-paths-ii/description/
+
+(in this 
+```
+ if(  obstacleGrid[i][j] == 1){
+            return 0;
+        }
+```
+
+this is the extra condition only)
 
 ##### dp on grids
 
